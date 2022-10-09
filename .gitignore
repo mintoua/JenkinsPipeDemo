@@ -35,3 +35,4 @@ build/
 ### Others ###
 mvnw
 mvnw.cmd
+.gitignore
