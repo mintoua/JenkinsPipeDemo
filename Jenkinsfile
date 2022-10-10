@@ -10,7 +10,7 @@ node{
         }
         stage('Build docker'){
 
-            dockerImage =  docker.build("springboot-deploy:${env.BUILD_ID}")
+            dockerImage =  docker.build("springboot-deploy:${env.BUILD_NUMBER}")
         }
         stage('Deploy docker'){
             echo "Docker Image Tage Name: ${dockerImageTag}"
