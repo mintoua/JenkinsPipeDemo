@@ -1,31 +1,24 @@
-pipeline {
-    agent any
+node{
+    def WORKSPACE = "/var/lib/jenkins/workspace/springboot-deploy"
+    def dockerImageTag = "springboot-deploy{env.BUILD_NUMBER}"
 
-    stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
+    try{
+
+        stage('Clone Repo'){
+
+            git url: 'https://github.com/mintoua/JenkinsPipeDemo.git', branch: 'master'
         }
-        stage('Build') {
-            steps {
-                echo 'Building'
-            }
+        stage('Build docker'){
+
+            dockerImage =  docker.build("springboot-deploy:${env.BUILD_NUMBER}")
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying'
-            }
+        stage('Deploy docker'){
+            echo "Docker Image Tage Name: ${dockerImageTag}"
+            sh "docker stop springboot-deploy || true && docker rm springboot-deploy || true"
+            sh "docker run --name springboot-deploy -d -p 8081:8080 springboot-deploy:${env.BUILD_NUMBER}"
         }
-        stage('Test') {
-            steps {
-                echo 'Testing'
-            }
-        }
-        stage('Release') {
-            steps {
-                echo 'Releasing'
-            }
-        }
+
+    }catch(e){
+        throw e
     }
 }
