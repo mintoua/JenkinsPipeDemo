@@ -10,12 +10,12 @@ node{
         }
         stage('Build docker'){
 
-            dockerImage =  docker.build("springboot-deploy:${env.BUILD_NUMBER}")
+            dockerImage =  docker.build("springboot-deploy:${env.BUILD_ID}")
         }
         stage('Deploy docker'){
             echo "Docker Image Tage Name: ${dockerImageTag}"
-            sh "docker stop springboot-deploy || true && docker rm springboot-deploy || true"
-            sh "docker run --name springboot-deploy -d -p 8081:8080 springboot-deploy:${env.BUILD_NUMBER}"
+            sh "sudo docker stop springboot-deploy || true && docker rm springboot-deploy || true"
+            sh "sudo docker run --name springboot-deploy -d -p 8081:8080 springboot-deploy:${env.BUILD_NUMBER}"
         }
 
     }catch(e){
