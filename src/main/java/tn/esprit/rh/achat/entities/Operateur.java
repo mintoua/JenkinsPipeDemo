@@ -16,8 +16,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import tn.esprit.achat.dto.DtoOperateur;
-
 @Entity
 @Getter
 @Setter
@@ -36,10 +34,5 @@ public class Operateur implements Serializable{
 	@OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
-	public Operateur(DtoOperateur o) {
-		this.nom=o.getNom();
-		this.prenom=o.getPrenom();
-		this.password=o.getPassword();
-	}
 	
 }

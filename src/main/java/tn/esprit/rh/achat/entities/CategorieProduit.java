@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tn.esprit.achat.dto.DtoCategorieproduit;
 
 @Entity
 @Getter
@@ -21,10 +20,6 @@ import tn.esprit.achat.dto.DtoCategorieproduit;
 @NoArgsConstructor
 public class CategorieProduit implements Serializable {
 
-	public CategorieProduit(DtoCategorieproduit cp) {
-		this.codeCategorie=cp.getCodeCategorie();
-		this.libelleCategorie=cp.getLibelleCategorie();
-	}
 	/**
 	 * 
 	 */

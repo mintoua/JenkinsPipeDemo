@@ -10,14 +10,14 @@ public interface IFactureService {
 
 	List<Facture> getFacturesByFournisseur(Long idFournisseur);
 
-	public Facture addFacture(Facture f);
+	Facture addFacture(Facture f);
 
-	public Facture cancelFacture(Facture f);
+	void cancelFacture(Long id);
 
 	Facture retrieveFacture(Long id);
 	
-	public void assignOperateurToFacture(Long idOperateur, Long idFacture);
+	void assignOperateurToFacture(Long idOperateur, Long idFacture);
 
-	public float pourcentageRecouvrement(Date startDate, Date endDate);
+	float pourcentageRecouvrement(Date startDate, Date endDate);
 
 }

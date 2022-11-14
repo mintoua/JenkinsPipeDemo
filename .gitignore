@@ -4,10 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-bin/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 ### STS ###
 .apt_generated
 .classpath
