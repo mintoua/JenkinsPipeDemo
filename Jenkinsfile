@@ -1,5 +1,7 @@
 pipeline {
-    
+    tools{
+        maven 'M2_HOME'
+    }
     environment { 
         registry = "mta24/achatapp" 
         registryCredential = 'dockerhub_id' 
@@ -47,8 +49,8 @@ pipeline {
         } 
         stage('Docker Enable CD'){
             steps{
-                sh 'sudo chmod 666 /var/run/docker.sock'
-                sh 'sudo chmod +x /usr/local/bin/docker-compose'
+                //sh 'sudo chmod 666 /var/run/docker.sock'
+                //sh 'sudo chmod +x /usr/local/bin/docker-compose'
                 sh 'docker-compose --version'
             }
         } 
