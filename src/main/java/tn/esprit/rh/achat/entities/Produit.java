@@ -17,6 +17,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import tn.esprit.achat.dto.DtoProduit;
+
 @Entity
 @Getter
 @Setter
@@ -47,7 +49,14 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JsonIgnore
 	private CategorieProduit categorieProduit;
-	
+	public Produit(DtoProduit p) {
+		this.codeProduit=p.getCodeProduit();
+		this.libelleProduit=p.getLibelleProduit();
+		this.prix=p.getPrix();
+		this.dateCreation=p.getDateCreation();
+		this.dateDerniereModification=p.getDateDerniereModification();
+			
+	}
 
 
 	

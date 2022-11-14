@@ -1,6 +1,7 @@
 package tn.esprit.rh.achat.entities;
 
 import java.io.Serializable;
+
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import tn.esprit.achat.dto.DtoSecteurActivite;
 
 @Entity
 @Getter
@@ -31,4 +34,8 @@ public class SecteurActivite implements Serializable{
 	@ManyToMany(mappedBy="secteurActivites")
 	@JsonIgnore
 	private Set<Fournisseur> fournisseurs;
+	public SecteurActivite(DtoSecteurActivite sa) {
+		this.codeSecteurActivite=sa.getCodeSecteurActivite();
+		this.libelleSecteurActivite=sa.getLibelleSecteurActivite();
+		}
 }
