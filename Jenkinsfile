@@ -34,7 +34,7 @@ pipeline {
          stage('Maven Test/JUnit') {
             steps {
                 sh 'mvn test'
-                //sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduiServiceImplTest -Dmaven.test.failure.ignore=true'  
+                //sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceImplTest -Dmaven.test.failure.ignore=true'  
             }
         }
         stage('CodeQuality SonarQube') {
