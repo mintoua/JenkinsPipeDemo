@@ -1,4 +1,10 @@
 pipeline {
+    
+    environment { 
+        registry = "YourDockerhubAccount/YourRepository" 
+        registryCredential = 'dockerhub_id' 
+        dockerImage = '' 
+    }
     agent any
 
     stages {
@@ -34,7 +40,6 @@ pipeline {
                 sh 'mvn sonar:sonar  -Dsonar.login=admin -Dsonar.password=sonar'  
             }
         } 
-     
        stage('DeployArtefact Nexus'){
             steps{
                 sh 'mvn deploy -DskipStaging=true'
@@ -69,15 +74,16 @@ pipeline {
             }
         }
     }
-        post {
+    post 
+    {
         always {
             echo 'This will always run'
-        }
+                }
         success {
             mail to: "toupkandi.mintoua@esprit.tn",
                      subject: "Success",
                      body: "Succes on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER} "        
-        }
+                }
         failure {
                     mail to: "toupkandi.mintoua@esprit.tn",
                      subject: "Failure",
