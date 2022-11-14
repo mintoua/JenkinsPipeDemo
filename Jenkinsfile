@@ -27,14 +27,14 @@ pipeline {
         }
         stage('Maven Test/Mockito') {
             steps {
-                sh 'mvn clean test'
-                //sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceMockTest' 
+                //sh 'mvn clean test'
+                sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceMockTest' 
             }
         }
          stage('Maven Test/JUnit') {
             steps {
-                sh 'mvn test'
-                //sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceImplTest -Dmaven.test.failure.ignore=true'  
+                //sh 'mvn test'
+                sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceImplTest -Dmaven.test.failure.ignore=true'  
             }
         }
         stage('CodeQuality SonarQube') {
