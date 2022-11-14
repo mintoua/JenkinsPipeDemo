@@ -41,7 +41,7 @@ pipeline {
 
           stage('Artifact Construction') {
                       steps{
-                          sh "mvn -B -DskipTests -f backend-spring/pom.xml package "
+                          sh "mvn -B -DskipTests  package "
                       }
                   }
         /*  stage('SONAR') {
