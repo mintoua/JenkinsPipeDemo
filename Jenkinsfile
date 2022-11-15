@@ -41,7 +41,7 @@ pipeline{
         stage(' Maven Build / Nexus'){
             steps{
                 echo 'Install and Deployement';
-                sh "mvn deploy -DskipStaging=true";
+                sh "mvn deploy ";
             }
         }
     }
