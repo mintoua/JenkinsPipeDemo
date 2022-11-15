@@ -44,19 +44,24 @@ pipeline {
                           sh "mvn -B -DskipTests  package "
                       }
                   }
-
+                  stage('sonar') {
+                              steps{
+                                  sh "mvn sonar:sonar -Dsonar.projectKey=sonarqube -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=457043f6eff47ed35df651e306450be2b2f28f84"
+                              }
+                          }
+/*
         stage('SONAR') {
             steps {
 
               script {
 
-                  sh 'mvn  sonar1:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
+                  sh 'mvn  sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
 
 
                       }
                    }
 
-         }
+         }*/
          stage('nexus') {
             steps {
 
@@ -87,6 +92,7 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                      sh 'docker push salem13/backcicd'
                                     }
                           }*/
+
                           stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
