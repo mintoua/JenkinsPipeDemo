@@ -11,7 +11,7 @@ pipeline{
         }
         
         
-        stage('Maven compile and clean'){
+        stage('Maven compile and install'){
             steps{
                 echo 'Maven compile';
                 sh "mvn compiler:compile";
