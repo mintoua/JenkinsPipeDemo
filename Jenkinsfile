@@ -28,7 +28,7 @@ pipeline{
         stage('Maven Test'){
             steps{
                 echo 'Maven test';
-                sh 'mvn clean test Dtest=”OperateurServiceMockTest”'
+                sh 'mvn clean test -Dtest=”OperateurServiceMockTest”'
                 //sh 'mvn clean test -Dtest=tn.esprit.rh.services.OperateurServiceMockTest' 
             }
         }
