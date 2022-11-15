@@ -13,8 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tn.esprit.rh.achat.dto.DtoSecteurActivite;
 
+import tn.esprit.rh.achat.dto.DtoSecteurActivite;
 
 @Entity
 @Getter
@@ -38,4 +38,7 @@ public class SecteurActivite implements Serializable{
 		this.codeSecteurActivite=sa.getCodeSecteurActivite();
 		this.libelleSecteurActivite=sa.getLibelleSecteurActivite();
 		}
+
+	public SecteurActivite(long l, String s, String test) {
+	}
 }
