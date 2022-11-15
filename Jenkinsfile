@@ -83,6 +83,7 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                      sh 'docker push salem13/backcicd'
                                     }
                           }
+                          }
 
                           stage('Run Spring && MySQL Containers') {
                                 steps {
