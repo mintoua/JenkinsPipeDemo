@@ -49,19 +49,10 @@ pipeline {
                                   sh "mvn sonar:sonar -Dsonar.projectKey=sonarqube -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=aa652be1cd791c5d6f35a3ae6a7033752120fd13"
                               }
                           }
-/*
-        stage('SONAR') {
-            steps {
-
-              script {
-
-                  sh 'mvn  sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
 
 
-                      }
-                   }
 
-         }*/
+         }
          stage('nexus') {
             steps {
 
@@ -84,14 +75,14 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                         sh 'docker login -u salem13 -p azerty123.'}
                                 }
                                 }
-                                /*
+
                           stage('Pushing Docker Image') {
                                 steps {
                                     script {
 
                                      sh 'docker push salem13/backcicd'
                                     }
-                          }*/
+                          }
 
                           stage('Run Spring && MySQL Containers') {
                                 steps {
