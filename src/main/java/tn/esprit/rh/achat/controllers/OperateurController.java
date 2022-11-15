@@ -34,13 +34,6 @@ public class OperateurController {
 		return operateurService.retrieveOperateur(operateurId);
 	}
 
-	// http://localhost:8089/SpringMVC/operateur/add-operateur
-	@PostMapping("/add-operateur")
-	@ResponseBody
-	public Operateur addOperateur(@RequestBody DtoOperateur o) {
-		 Operateur operateur=new Operateur(o);
-		return  operateurService.addOperateur(operateur);
-	}
 
 	
 	@DeleteMapping("/remove-operateur/{operateur-id}")
@@ -52,7 +45,7 @@ public class OperateurController {
 	// http://localhost:8089/SpringMVC/operateur/modify-operateur
 	@PutMapping("/modify-operateur")
 	@ResponseBody
-	public Operateur modifyOperateur(@RequestBody DtoOperateur o) {
+	public Operateur addAndModifyOperateur(@RequestBody DtoOperateur o) {
 		Operateur operateur=new Operateur(o);
 		return operateurService.addOperateur(operateur);
 	}
