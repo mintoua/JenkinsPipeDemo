@@ -1,24 +1,43 @@
-node{
-    def WORKSPACE = "/var/lib/jenkins/workspace/springboot-deploy"
-    def dockerImageTag = "springboot-deploy{env.BUILD_NUMBER}"
-
-    try{
-
-        stage('Clone Repo'){
-
-            git url: 'https://github.com/mintoua/JenkinsPipeDemo.git', branch: 'master'
+pipeline{
+    agent any
+    stages{
+        
+        stage('Clone Git Repo'){
+            steps{
+                echo 'pulling from git ... ';
+                git branch:'main',
+                url:'https://github.com/JecerBenH/app.git';
+            }
         }
-        stage('Build docker'){
-
-            dockerImage =  docker.build("springboot-deploy:${env.BUILD_NUMBER}")
+        
+        
+        stage('Maven compile and clean'){
+            steps{
+                echo 'Maven compile';
+                sh "mvn compiler:compile";
+                sh "mvn clean";
+            }
         }
-        stage('Deploy docker'){
-            echo "Docker Image Tage Name: ${dockerImageTag}"
-            sh "sudo docker stop springboot-deploy || true && docker rm springboot-deploy || true"
-            sh "sudo docker run --name springboot-deploy -d -p 8081:8080 springboot-deploy:${env.BUILD_NUMBER}"
+        
+        stage('Maven Test'){
+            steps{
+                echo 'Maven test';
+                sh "mvn test";               
+            }
         }
-
-    }catch(e){
-        throw e
+        
+        stage('SonarQube'){
+            steps{
+                echo 'Maven Sonar';
+                sh "mvn sonar:sonar -Dsonar.login=38ac039765f3484c0b7dc83d21af18ed08837cb5";
+            }
+        }
+        
+        stage(' Maven Build / Nexus'){
+            steps{
+                echo 'Install and Deployement';
+                sh "mvn deploy -e";
+            }
+        }
     }
 }
