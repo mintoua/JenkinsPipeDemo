@@ -12,7 +12,7 @@ public interface IFactureService {
 
 	Facture addFacture(Facture f);
 
-	void cancelFacture(Long id);
+	void cancelFacture(Facture id);
 
 	Facture retrieveFacture(Long id);
 	

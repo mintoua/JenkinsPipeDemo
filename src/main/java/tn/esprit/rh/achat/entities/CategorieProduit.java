@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.rh.achat.dto.DtoCategorieproduit;
 
 @Entity
 @Getter
@@ -19,6 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategorieProduit implements Serializable {
+
 
 	/**
 	 * 
@@ -32,4 +34,9 @@ public class CategorieProduit implements Serializable {
 	@OneToMany(mappedBy = "categorieProduit")
 	@JsonIgnore
 	private Set<Produit> produits;
+
+	public CategorieProduit(DtoCategorieproduit p) {
+		this.codeCategorie=p.getCodeCategorie();
+		this.libelleCategorie=p.getLibelleCategorie();
+	}
 }

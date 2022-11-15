@@ -1,6 +1,7 @@
 package tn.esprit.rh.achat.entities;
 
 import java.io.Serializable;
+
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.rh.achat.dto.DtoStock;
+
 
 @Entity
 @Getter
@@ -36,5 +39,12 @@ public class Stock implements Serializable {
 		this.qte = qte;
 		this.qteMin = qteMin;
 	}
+	public Stock(DtoStock s) {
+		this.libelleStock=s.getLibelleStock();
+		this.qte=s.getQte();
+		this.qteMin=s.getQteMin();
+			
+	}
+// This is a comment
 
 }

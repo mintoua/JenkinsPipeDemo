@@ -3,6 +3,8 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.rh.achat.dto.DtoCategorieproduit;
 import tn.esprit.rh.achat.entities.CategorieProduit;
 import tn.esprit.rh.achat.services.ICategorieProduitService;
 
@@ -20,8 +22,8 @@ public class CategorieProduitController {
 	@GetMapping("/retrieve-all-categorieProduit")
 	@ResponseBody
 	public List<CategorieProduit> getCategorieProduit() {
-		List<CategorieProduit> list = categorieProduitService.retrieveAllCategorieProduits();
-		return list;
+		
+		return categorieProduitService.retrieveAllCategorieProduits();
 	}
 
 	// http://localhost:8089/SpringMVC/categorieProduit/retrieve-categorieProduit/8
@@ -34,12 +36,12 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/add-categorieProduit
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
-		return categorieProduit;
+	public CategorieProduit addCategorieProduit(@RequestBody DtoCategorieproduit cp) {
+		 CategorieProduit categorieproduit=new CategorieProduit(cp);
+		return categorieProduitService.addCategorieProduit(categorieproduit);
 	}
 
-	// http://localhost:8089/SpringMVC/categorieProduit/remove-categorieProduit/{categorieProduit-id}
+	
 	@DeleteMapping("/remove-categorieProduit/{categorieProduit-id}")
 	@ResponseBody
 	public void removeCategorieProduit(@PathVariable("categorieProduit-id") Long categorieProduitId) {
@@ -49,8 +51,9 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/modify-categorieProduit
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
+	public CategorieProduit modifyCategorieProduit(@RequestBody DtoCategorieproduit p) {
+		CategorieProduit cp=new CategorieProduit(p);
+		return categorieProduitService.addCategorieProduit(cp);
 	}
 
 	

@@ -3,6 +3,9 @@ package tn.esprit.rh.achat.controllers;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+
+import tn.esprit.rh.achat.dto.DtoProduit;
 import tn.esprit.rh.achat.entities.Produit;
 import tn.esprit.rh.achat.services.IProduitService;
 
@@ -22,8 +25,8 @@ public class ProduitRestController {
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
-		List<Produit> list = produitService.retrieveAllProduits();
-		return list;
+		
+		return produitService.retrieveAllProduits();
 	}
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
@@ -34,26 +37,27 @@ public class ProduitRestController {
 	}
 
 	/* Ajouter en produit tout en lui affectant la catégorie produit et le stock associés */
-	// http://localhost:8089/SpringMVC/produit/add-produit/{idCategorieProduit}/{idStock}
+	
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
-		Produit produit = produitService.addProduit(p);
-		return produit;
+	public Produit addProduit(@RequestBody DtoProduit p) {
+		Produit produit=new Produit(p);
+		return produitService.addProduit(produit);
 	}
 
-	// http://localhost:8089/SpringMVC/produit/remove-produit/{produit-id}
+	
 	@DeleteMapping("/remove-produit/{produit-id}")
 	@ResponseBody
 	public void removeProduit(@PathVariable("produit-id") Long produitId) {
 		produitService.deleteProduit(produitId);
 	}
 
-	// http://localhost:8089/SpringMVC/produit/modify-produit/{idCategorieProduit}/{idStock}
+	
 	@PutMapping("/modify-produit")
 	@ResponseBody
-	public Produit modifyProduit(@RequestBody Produit p) {
-		return produitService.updateProduit(p);
+	public Produit modifyProduit(@RequestBody DtoProduit p) {
+		Produit produit=new Produit(p);
+		return produitService.updateProduit(produit);
 	}
 
 	/*
@@ -70,13 +74,7 @@ public class ProduitRestController {
 	 * Revenu Brut d'un produit (qte * prix unitaire de toutes les lignes du
 	 * detailFacture du produit envoyé en paramètre )
 	 */
-	// http://localhost:8089/SpringMVC/produit/getRevenuBrutProduit/1/{startDate}/{endDate}
-/*	@GetMapping(value = "/getRevenuBrutProduit/{idProduit}/{startDate}/{endDate}")
-	public float getRevenuBrutProduit(@PathVariable("idProduit") Long idProduit,
-			@PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
-			@PathVariable(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
 
-		return produitService.getRevenuBrutProduit(idProduit, startDate, endDate);
-	}*/
+
 
 }
