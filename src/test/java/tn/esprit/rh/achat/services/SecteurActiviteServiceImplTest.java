@@ -33,9 +33,6 @@ public class SecteurActiviteServiceImplTest {
 
     @InjectMocks
     SecteurActiviteServiceImpl secteurService;
-    //Fournisseur f=Fournisseur.builder().idFournisseur(1L).code("123").libelle("test1")
-    //   .categorieFournisseur(null).detailFournisseur(null).factures(null)
-    //  .secteurActivites(null).build();
 
     @Test
     public void retrieveSecteurActiviteTest(){

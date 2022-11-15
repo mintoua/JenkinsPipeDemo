@@ -65,10 +65,10 @@ pipeline {
 sh 'mvn -DskipTests deploy  -e'                      }
                    }
          }
-      /*    stage('Build Docker Image'){
+         stage('Build Docker Image'){
                       steps {
                           script{
-          				    sh 'docker image build . -t haifa123456/backcicd -f backend-spring/Dockerfile '
+          				    sh 'docker image build  -t salem13/backcicd .  '
                           }
                       }
           		}
@@ -76,24 +76,24 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                 steps {
                                     script {
 
-                                        sh 'docker login -u haifa123456 -p haifabrineg'}
+                                        sh 'docker login -u salem13 -p azerty123.'}
                                 }
                                 }
                           stage('Pushing Docker Image') {
                                 steps {
                                     script {
 
-                                     sh 'docker push haifa123456/backcicd'
+                                     sh 'docker push salem13/backcicd'
                                     }
                                 }
                           }
                           stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
-                                      sh ' docker-compose -f backend-spring/docker-compose.yml up -d '
+                                      sh 'docker-compose up -d'
                                     }
                                 }
-                            }*/
+                            }
      }
 
      }
