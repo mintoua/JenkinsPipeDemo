@@ -3,8 +3,8 @@ FROM openjdk:slim
 
 WORKDIR /app
 
-COPY target/tpAchatProject-1.0.jar /app/tpAchatProject-1.0.jar
+COPY /target/achat-1.0.jar /app/achat-1.0.jar
 
 COPY src/main/resources/application.properties /app
 
-ENTRYPOINT ["java","-jar","tpAchatProject-1.0.jar", "-Dspring.config.location=", "/app/application.properties"]
+ENTRYPOINT ["java","-jar","achat-1.0.jar", "-Dspring.config.location=", "/app/application.properties"]
