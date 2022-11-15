@@ -46,7 +46,7 @@ public class SecteurActiviteController {
 	// http://localhost:8089/SpringMVC/secteurActivite/modify-secteurActivite
 	@PutMapping("/modify-secteurActivite")
 	@ResponseBody
-	public SecteurActivite AddAndmodifySecteurActivite(@RequestBody DtoSecteurActivite sa) {
+	public SecteurActivite Add_Modify_SecteurActivite(@RequestBody DtoSecteurActivite sa) {
 		SecteurActivite secteurActivite=new SecteurActivite(sa);
 		return secteurActiviteService.addSecteurActivite(secteurActivite);
 	}

@@ -46,7 +46,7 @@ pipeline {
                   }
                   stage('sonar') {
                               steps{
-                                  sh "mvn sonar:sonar -Dsonar.projectKey=sonarqube -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=457043f6eff47ed35df651e306450be2b2f28f84"
+                                  sh "mvn sonar:sonar -Dsonar.projectKey=sonarqube -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=aa652be1cd791c5d6f35a3ae6a7033752120fd13"
                               }
                           }
 /*
