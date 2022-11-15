@@ -41,5 +41,8 @@ public class Operateur implements Serializable{
 		this.prenom=o.getPrenom();
 		this.password=o.getPassword();
 	}
-	
+
+
+	public Operateur(String nom, String prenom, String password) {
+	}
 }
