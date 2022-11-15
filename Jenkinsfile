@@ -22,7 +22,7 @@ pipeline{
         stage('Maven Test'){
             steps{
                 echo 'Maven test';
-                sh "mvn test";               
+                sh 'mvn clean test -Dtest=tn.esprit.rh.services.OperateurServiceMockTest' 
             }
         }
         
