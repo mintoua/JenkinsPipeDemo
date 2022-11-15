@@ -11,11 +11,11 @@ pipeline{
         }
         
         
-        stage('Maven compile and install'){
+        stage('Maven compile'){
             steps{
                 echo 'Maven compile';
-                sh "mvn clean install";
-            }
+                sh "mvn compiler:compile";
+                sh "mvn clean";            }
         }
         
         stage('Maven Package') {
