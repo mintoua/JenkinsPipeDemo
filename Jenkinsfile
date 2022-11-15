@@ -28,7 +28,7 @@ pipeline {
         stage('Maven Test/Mockito') {
             steps {
                 //sh 'mvn clean test'
-                sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceMockTest' 
+                sh 'mvn clean test -Dtest=tn.esprit.rh.services.ProduitServiceMockTest -DfailIfNoTests=false' 
             }
         }
          stage('Maven Test/JUnit') {
