@@ -27,17 +27,17 @@ pipeline {
                       }
                    }
          }
-          /* stage('MVN test') {
+          stage('MVN test') {
             steps {
 
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml test'
+                  sh 'mvn  test'
 
 
                       }
                    }
-         }*/
+         }
 
           stage('Artifact Construction') {
                       steps{
@@ -45,18 +45,18 @@ pipeline {
                       }
                   }
 
-        /*  stage('SONAR') {
+        stage('SONAR') {
             steps {
 
               script {
 
-                  sh 'mvn -f backend-spring/pom.xml sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://172.10.0.140:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
+                  sh 'mvn  sonar:sonar  -Dsonar.sources=src/main/java -Dsonar.css.node=. -Dsonar.java.binaries=. -Dsonar.host.url=http://192.168.43.40:9000/ -Dsonar.login=admin   -Dsonar.password=sonar'
 
 
                       }
                    }
 
-         }*/
+         }
          stage('nexus') {
             steps {
 
