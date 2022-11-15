@@ -61,7 +61,7 @@ pipeline {
 sh 'mvn -DskipTests deploy  -e'                      }
                    }
          }
-      /*   stage('Build Docker Image'){
+        stage('Build Docker Image'){
                       steps {
                           script{
           				    sh 'docker image build  -t salem13/backcicd .  '
@@ -91,7 +91,7 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                       sh 'docker-compose up -d'
                                     }
                                 }
-                            }*/
+                            }
      }
 
      }
