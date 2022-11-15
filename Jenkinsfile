@@ -75,7 +75,7 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                         sh 'docker login -u salem13 -p azerty123.'}
                                 }
                                 }
-
+        /*
                           stage('Pushing Docker Image') {
                                 steps {
                                     script {
@@ -83,7 +83,7 @@ sh 'mvn -DskipTests deploy  -e'                      }
                                      sh 'docker push salem13/backcicd'
                                     }
                           }
-                          }
+                          }*/
 
                           stage('Run Spring && MySQL Containers') {
                                 steps {
