@@ -5,8 +5,8 @@ pipeline{
         stage('Clone Git Repo'){
             steps{
                 echo 'pulling from git ... ';
-                git branch:'main',
-                url:'https://github.com/JecerBenH/app.git';
+                git branch:'jecer',
+                url:'https://github.com/mintoua/JenkinsPipeDemo.git';
             }
         }
         
