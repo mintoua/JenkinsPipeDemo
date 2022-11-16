@@ -1,4 +1,9 @@
 pipeline{
+     environment { 
+        registry = "mta24/achatapp" 
+        registryCredential = 'dockerhub_id' 
+        dockerImage = '' 
+    }
     agent any
     stages{
         
