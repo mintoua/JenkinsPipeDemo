@@ -44,7 +44,8 @@ pipeline{
                 sh "mvn deploy ";
             }
         }*/
-        stage('Building Docker image') { 
+        
+        /*stage('Building Docker image') { 
             steps { 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
@@ -64,7 +65,7 @@ pipeline{
             steps {
                 sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
             }
-        }
+        }*/
         
     }
 
