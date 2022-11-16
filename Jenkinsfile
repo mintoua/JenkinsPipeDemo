@@ -67,6 +67,6 @@ pipeline{
                 sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
             }
         }*/
-        
+    } 
     }
 
