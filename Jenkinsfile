@@ -71,8 +71,8 @@ pipeline {
             }
         } 
         stage('Run up') { 
-            steps { 
-                sh "docker run -d 5004:5000 $registry:$BUILD_NUMBER" 
+            steps {
+                sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
             }
         }
     }
