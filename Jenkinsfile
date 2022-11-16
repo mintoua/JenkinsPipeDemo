@@ -70,9 +70,9 @@ pipeline {
                 } 
             }
         } 
-        stage('Cleaning up') { 
+        stage('Run up') { 
             steps { 
-                sh "docker rmi $registry:$BUILD_NUMBER" 
+                sh "docker run -d 5004:5000 $registry:$BUILD_NUMBER" 
             }
         }
     }
