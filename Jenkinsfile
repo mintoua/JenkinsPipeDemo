@@ -44,7 +44,6 @@ pipeline{
                 sh "mvn deploy ";
             }
         }*/
-        
         stage('Building Docker image') { 
             steps { 
                 script { 
@@ -66,22 +65,6 @@ pipeline{
                 sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
             }
         }
-    }
-    post 
-    {
-        always {
-            echo 'This will always run'
-                }
-        success {
-            mail to: "jasser.benhammouda@esprit.tn",
-                     subject: "Success",
-                     body: "Succes on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER} "        
-                }
-        failure {
-                    mail to: "jasser.benhammouda@esprit.tn",
-                     subject: "Failure",
-                     body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "     
-                }
-    }
+        
     }
 
