@@ -38,11 +38,50 @@ pipeline{
             }
         }
         
-        stage(' Maven Build / Nexus'){
+        /*stage(' Maven Build / Nexus'){
             steps{
                 echo 'Install and Deployement';
                 sh "mvn deploy ";
             }
+        }*/
+        
+        stage('Building Docker image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
         }
+        stage('Deploy image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
+        stage('Run up') { 
+            steps {
+                sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
+            }
+        }
+    }
+    post 
+    {
+        always {
+            echo 'This will always run'
+                }
+        success {
+            mail to: "jasser.benhammouda@esprit.tn",
+                     subject: "Success",
+                     body: "Succes on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER} "        
+                }
+        failure {
+                    mail to: "jasser.benhammouda@esprit.tn",
+                     subject: "Failure",
+                     body: "Failure on job ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Build URL: ${env.BUILD_URL} "     
+                }
+    }
     }
 }
