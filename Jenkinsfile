@@ -31,20 +31,20 @@ pipeline{
                 sh 'mvn clean test -Dtest=tn.esprit.rh.services.OperateurServiceMockTest -DfailIfNoTests=false' 
             }
         }
-        
+       /*
         stage('SonarQube'){
             steps{
                 echo 'Maven Sonar';
                 sh "mvn sonar:sonar -Dsonar.login=38ac039765f3484c0b7dc83d21af18ed08837cb5";
             }
         }
-        
-        /*stage(' Maven Build / Nexus'){
+        */
+        stage(' Maven Build / Nexus'){
             steps{
                 echo 'Install and Deployement';
                 sh "mvn deploy ";
             }
-        }*/
+        }
         
         /*stage('Building Docker image') { 
             steps { 
