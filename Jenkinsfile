@@ -1,7 +1,7 @@
 pipeline{
      environment { 
-        registry = "jecer/achatapp" 
-        registryCredential = 'dockerhub_id' 
+        registry = "jecer1997/myrepo"
+        registryCredential = 'docker_id' 
         dockerImage = '' 
     }
     agent any
@@ -52,6 +52,7 @@ pipeline{
         
         stage('Building Docker image') { 
             steps { 
+                 sh "docker build –t <image_name>"
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
