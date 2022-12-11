@@ -1,5 +1,9 @@
 pipeline{
-     
+     environment { 
+        registry = "jecer/achatapp" 
+        registryCredential = 'dockerhub_id' 
+        dockerImage = '' 
+    }
     agent any
     stages{
         
