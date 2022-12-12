@@ -60,8 +60,7 @@ pipeline{
         stage('Deploy image') { 
             steps { 
                 script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
+                    sh "docker push jecer1997/myrepo";
                     }
                 } 
             }
