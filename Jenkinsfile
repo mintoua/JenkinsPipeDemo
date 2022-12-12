@@ -50,24 +50,38 @@ pipeline{
             }
         }
         
-        stage('Building Docker image') { 
-            steps { 
-                script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-                }
-            } 
-        }
-        stage('Deploy image') { 
-            steps { 
-                    sh "docker push jecer1997/myrepo";
-                } 
-            }
+        stage('Build Docker Image'){
+             steps {
+                   script{
+          	          sh 'docker image build  -t jecer1997/app .  '
+                   }
+             }
+         }
+         
+         stage('Docker login') {
+              steps {
+                   script {
+                         sh 'docker login -u jecer1997 -p 4CDP25fun'
+                   }
+              }
+         }
 
-        stage('Run up') { 
-            steps {
-                sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
-            }
-        }
+         stage('Pushing Docker Image') {
+              steps {
+                   script {
+                        sh 'docker push jecer1997/app'
+                           }
+              }
+          }
+
+          stage('Run Spring && MySQL Containers') {
+                steps {
+                      script {
+                             sh 'docker-compose up -d'
+                             }
+                      }
+          }
+         
     } 
     }
 
