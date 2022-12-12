@@ -59,12 +59,10 @@ pipeline{
         }
         stage('Deploy image') { 
             steps { 
-                script { 
                     sh "docker push jecer1997/myrepo";
-                    }
                 } 
             }
-        } 
+
         stage('Run up') { 
             steps {
                 sh "docker run -d -p 5004:5000 $registry:$BUILD_NUMBER" 
