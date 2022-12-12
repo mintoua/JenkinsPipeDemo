@@ -9,7 +9,7 @@ services:
     environment:
       MYSQL_HOST: mysqlCICD
       MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_PASSWORD: 
   db:
     container_name: mysql_container
     image: mysql
