@@ -1,4 +1,5 @@
 FROM openjdk:8-jdk-alpine
-RUN curl -u admin:nexus -o achat-1.0.jar "http://192.168.56.2:8081/repository/maven-releases/tn/esprit/rh/achat/1.0/achat-1.0.jar" -L
-ENTRYPOINT ["java","-jar","/achat-1.0.jar"]
-EXPOSE 8082
+WORKDIR /app
+COPY /target/achat-1.0.jar /app/achat-1.0.jar
+COPY src/main/resources/application.properties /app
+ENTRYPOINT ["java","-jar","achat-1.0.jar", "-Dspring.config.location=", "/app/application.properties"]
