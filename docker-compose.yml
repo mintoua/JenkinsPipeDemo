@@ -2,7 +2,7 @@ version: "3"
 services:
   back-end:
     container_name: backcicd
-    image: salem13/backcicd
+    image: jecer1997/app
     restart: always
     ports:
       - 8089:8089
