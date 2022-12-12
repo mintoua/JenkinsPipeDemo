@@ -1,7 +1,7 @@
 version: "3"
 services:
-  back-end:
-    container_name: backcicd
+  backend:
+    container_name: spring_container
     image: jecer1997/app
     restart: always
     ports:
@@ -11,7 +11,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
   db:
-    container_name: mysqlCICD
+    container_name: mysql_container
     image: mysql
     ports:
       - 3309:3306
