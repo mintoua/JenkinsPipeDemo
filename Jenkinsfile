@@ -61,7 +61,7 @@ pipeline{
          stage('Docker login') {
               steps {
                    script {
-                         sh 'docker login -u jecer1997 -p 4CDP25fun'
+                         sh 'docker login -u jecer1997 -p *******'
                    }
               }
          }
